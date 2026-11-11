@@ -24,7 +24,7 @@ jobs:
 
       - name: Extract project
         run: |
-          ZIP_FILE=$(find . -maxdepth 1 -iname '*.zip' -type f | head -n 1)
+       ZIP_FILE=$(find . -type f -iname '*.zip' -not -path './.git/*' -print -quit) 
           if [ -z "$ZIP_FILE" ]; then
             echo "No ZIP file found in repository root."
             exit 1
